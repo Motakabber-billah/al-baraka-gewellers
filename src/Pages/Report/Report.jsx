@@ -1,18 +1,23 @@
 import DropdownButton from "../../Shared/DropdownButton/DropdownButton";
 import { RxCross2 } from "react-icons/rx";
 import { ImPrinter } from "react-icons/im";
-import ProductTable from "../../Tables/ProductTable/ProductTable";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Report = () => {
+    const linkClass = ({ isActive }) =>
+        `text-[14px] w-full text-center pt-3 px-2 py-1 rounded-md transition
+     ${isActive
+            ? "bg-blue-100 text-blue-700 font-semibold"
+            : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+        }`;
     return (
         <div className='bg-[#F1F5F9] mt-5 py-3 px-5'>
             <h2 className='text-[#F2A531] text-xl font-semibold'>Reports</h2>
-            <div className='bg-white grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-11 gap-5 justify-items-start px-2 py-2 rounded-md mt-3'>
-                <Link to={'/user/report/categoryTable'}><button className="text-[14px]">Category</button></Link>
-                <Link to={'/user/report/productTable'}><button className="text-[14px]">Product</button></Link>
-                <Link to={'/user/report/designTable'}><button className="text-[14px]">Design</button></Link>
-                <Link to={'/user/report/skuTable'}><button className="text-[14px]">SKU</button></Link>
+            <div className='bg-white className="bg-white grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-3 px-2 py-2 rounded-md mt-3"'>
+                <NavLink to={'/user/report/categoryTable'} className={linkClass}>Category</NavLink>
+                <NavLink to={'/user/report/productTable'} className={linkClass}>Product</NavLink>
+                <NavLink to={'/user/report/designTable'} className={linkClass}>Design</NavLink>
+                <NavLink to={'/user/report/skuTable'} className={linkClass}>SKU</NavLink>
                 <button className="text-[14px]">SKU/Karigar Report</button>
                 <button className="text-[14px]">Labelled Stock</button>
                 <button className="text-[14px]">Packets</button>
@@ -39,9 +44,9 @@ const Report = () => {
 
                 <div>
                     <DropdownButton
-                    label='Select Purity'
-                    options={['A', 'B']}
-                ></DropdownButton>
+                        label='Select Purity'
+                        options={['A', 'B']}
+                    ></DropdownButton>
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -80,9 +85,6 @@ const Report = () => {
 
             </div>
 
-            {/* <div className="mt-5">
-                <ProductTable></ProductTable>
-            </div> */}
             <Outlet></Outlet>
         </div>
     );
