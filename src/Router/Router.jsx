@@ -8,6 +8,7 @@ import CategoryTable from "../Tables/CategoryTable/CategoryTable"
 import SkuTable from "../Tables/SkuTable/SkuTable"
 import DesignTable from "../Tables/DesignTable/DesignTable"
 import Login from "../Pages/Login/Login"
+import RegisterSteps from "../RegisterSteps/RegisterSteps"
 
 const Router = createBrowserRouter([
     {
@@ -22,6 +23,11 @@ const Router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>,
+            },
+
+            {
+                path: '/register',
+                element: <RegisterSteps></RegisterSteps>,
             },
 
             {
